@@ -22,8 +22,14 @@ socket.on('message', function (message) {
   console.log('New message')
   console.log(message.text)
 
-  $message.append('<p><strong>' + message.name + ' ' + momentTimestamp.local().format('h:mm a') + '</strong></p>')
-  $message.append('<p>' + message.text + '</p>')
+  if (message.name == name) {
+    $message.append('<p class="text-right"><strong>' + message.name + ' ' + momentTimestamp.local().format('h:mm a') + '</strong></p>')
+    $message.append('<p class="text-right">' + message.text + '</p>')
+  } else {
+    $message.append('<p><strong>' + message.name + ' ' + momentTimestamp.local().format('h:mm a') + '</strong></p>')
+    $message.append('<p>' + message.text + '</p>')
+  }
+  
   $messages.append($message)
 })
 
